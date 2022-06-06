@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux'
 import React, { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import './Header.css'
 import { useSetModal, useUser } from './hooks'
 import Login from './Login'
@@ -13,14 +13,7 @@ function Header({ pendingBookings, setPendingBookings }) {
     const setModal = useSetModal()
     const dispatch = useDispatch()
     const user = useUser()
-    const pathName = useLocation().pathname
-    const [showBar, setShowBar] = useState(pathName === '/')
-
-    useEffect(() => {
-        if (pathName === '/') {
-            setShowBar(true)
-        }
-    }, [pathName])
+    const [showBar, setShowBar] = useState(false)
 
     useEffect(() => {
         const loadBookings = async () => {
